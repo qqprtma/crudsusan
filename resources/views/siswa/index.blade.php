@@ -6,8 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                Daftar Kelas
-                <a href="{{route('kelas.create')}}"
+                Daftar Siswa
+                <a href="{{route('siswa.create')}}"
                 class= "btn btn-primary float-right">
                 Tambah Data
                 </a>
@@ -24,24 +24,35 @@
                          <table class="table">
                          <thead>
                          <tr>
-                         <th>Nomor</th>
-                         <th>Nama Kelas</th>
+                         <th>No</th>
+                         <th>Nis</th>
+                         <th>Nama</th>
+                         <th>Alamat</th>
+                         <th>Kelas</th>
+                         <th>Mata Pelajaran</th>
                          <th colspan="3">Aksi</th>
                          </tr>
                          </thead>
                          <tbody>
                         @php $no=1; @endphp
-                         @foreach($kelas as $data)
+                         @foreach($siswa as $data)
                          <tr>
                          <td>{{ $no++ }}</td>
+                         <td>{{$data->nis}}</td>
+                         <td>{{$data->nama}}</td>
+                         <td>{{$data->alamat}}</td>
                          <td>{{$data->kelas}}</td>
-                         <form action="{{route('kelas.destroy', $data->id)}}" method="post">
+                         <td>@foreach($data->mapel as $value)
+                         <li>{{$value->nama}}</li>
+                         @endforeach
+                         </td>
+                         <form action="{{route('siswa.destroy', $data->id)}}" method="post">
                          @csrf
                          @method('DELETE')
                          <td>
-                            <a href="{{route('kelas.show', $data->id)}}" class="btn btn-info">show</a></td>
+                            <a href="{{route('siswa.show', $data->id)}}" class="btn btn-info">show</a></td>
                          <td>
-                            <a href="{{route('kelas.edit', $data->id)}}" class="btn btn-success">edit</a></td>
+                            <a href="{{route('siswa.edit', $data->id)}}" class="btn btn-success">edit</a></td>
                          <td>
                             <button type="submit" onklick="return confirm('Apakah anda yakin?');"
                             class="btn btn-danger">Delete</button></td>

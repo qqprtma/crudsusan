@@ -23,3 +23,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 //CRUD
 Route::resource('kelas', 'KelasController');
 Route::resource('mapel', 'MapelController');
+Route::resource('siswa', 'SiswaController'); 

@@ -37,6 +37,8 @@
                            <a class ="navbar-brand"
                             href="{{route('kelas.index')}}">
                             Daftar kelas
+                            </a>
+                      </li>
 
                         <li>
                            <a class ="navbar-brand"
@@ -44,8 +46,14 @@
                             Daftar Mapel
                             </a>
                           </li>
-                       </a>
-                      </li>
+
+                          <li>
+                           <a class ="navbar-brand"
+                            href="{{route('siswa.index')}}">
+                            Daftar Siswa
+                            </a>
+                          </li>
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
