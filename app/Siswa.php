@@ -12,7 +12,7 @@ class Siswa extends Model
 
     public function mapel(){
         return $this->belongsToMany(
-        'App\Siswa',
+        'App\Mapel',
         'mapel_siswa',
         'id_siswa',
         'id_mapel');

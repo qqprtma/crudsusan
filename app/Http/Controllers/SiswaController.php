@@ -6,7 +6,7 @@ use App\Siswa;
 use App\Kelas;
 use Illuminate\Http\Request;
 use DB;
-use App\mapel;
+use App\Mapel;
 class SiswaController extends Controller
 {
     public function __construct(){
@@ -30,7 +30,7 @@ class SiswaController extends Controller
     //menampilkan halaman FORM INPUT
     $kelas = Kelas::all();
     $mapel = Mapel::all();
-    return view('siswa.create', compact('mapel'));
+    return view('siswa.create', compact('kelas','mapel'));
     }
 
     
@@ -59,7 +59,8 @@ class SiswaController extends Controller
         $kelas = Kelas::all();
         $siswa = Siswa::findOrFail($id);
         $mapel = Mapel::all();
-       return view('siswa.edit', compact('siswa', 'kelas', 'mapel'));
+        $selected = $siswa->mapel->pluck('id')->toArray();
+       return view('siswa.edit', compact('siswa', 'selected','kelas', 'mapel'));
     }
 
     
@@ -78,7 +79,9 @@ class SiswaController extends Controller
     
     public function destroy($id)
     {
-        $siswa = Siswa::findOrFail($id)->delete();
+        $siswa = Siswa::findOrFail($id);
+        $siswa->mapel()->detach();
+        $siswa->delete();
         return redirect()->route('siswa.index');
     }
 }

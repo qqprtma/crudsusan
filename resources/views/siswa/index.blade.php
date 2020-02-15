@@ -41,10 +41,13 @@
                          <td>{{$data->nis}}</td>
                          <td>{{$data->nama}}</td>
                          <td>{{$data->alamat}}</td>
-                         <td>{{$data->kelas}}</td>
-                         <td>@foreach($data->mapel as $value)
-                         <li>{{$value->nama}}</li>
+                         <td>{{$data->kelas->kelas}}</td>
+                         <td>
+                         <ul>
+                            @foreach($data->mapel as $value)
+                                <li>{{$value->nama}}</li>
                          @endforeach
+                         </ul>
                          </td>
                          <form action="{{route('siswa.destroy', $data->id)}}" method="post">
                          @csrf
@@ -58,7 +61,7 @@
                             class="btn btn-danger">Delete</button></td>
                             </form>
                          </tr>
-                      @endforeach
+                         @endforeach
                       </tbody>
                       </table>
                 </div>

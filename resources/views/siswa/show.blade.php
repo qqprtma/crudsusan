@@ -26,15 +26,6 @@
                 </div>
                 </div>
                 <div class="form-group">
-                <label>Daftar Siswa</label>
-                <ul>
-                @foreach($kelas->siswa as $data)
-                <li>{{$data->nama}} - {{$data->nis}}</li>
-                @endforeach
-                </ul>
-                </div>
-
-                <div class="form-group">
                 <a href="{{url()->previous()}}" class="btn btn-primary" >Simpan</a>
                 </di>
                 </div>
